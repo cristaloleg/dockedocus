@@ -22,10 +22,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Push to GitHub Packages
-        uses: docker/build-push-action@v1
+        uses: docker/build-push-action@v2
         with:
+          context: .
+          push: true
+          tags: olegkovalov/dockedocus:latest
+          registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          registry: ghcr.io
-          repository: olegkovalov/dockedocus
           tag_with_ref: true
